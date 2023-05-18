@@ -1,0 +1,16 @@
+fastapi 
+uvicorn 
+openai
+requests
+python-dotenv
+
+###### Testing and Coverage
+httpx
+pytest
+pytest-xdist
+pytest-html
+pylint
+coverage
+
+###### Monitoring
+starlette-prometheus==0.9.0
