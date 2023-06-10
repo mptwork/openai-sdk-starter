@@ -93,6 +93,7 @@ docker run --rm -h localhost --env-file .env --name summarize -p 8000:8000 summa
 ## References
 
 - [FastAPI](https://fastapi.tiangolo.com/)
+- [Jinja2](https://fastapi.tiangolo.com/advanced/templates/)
 - [OpenAI](https://platform.openai.com/docs/introduction)
 - [FastAPI Prometheus Monitoring](https://github.com/trallnag/prometheus-fastapi-instrumentator)
 - [PyTest - Unit testing](https://docs.pytest.org/en/7.1.x/contents.html)

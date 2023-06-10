@@ -2,12 +2,26 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import openai
 import os
+from pathlib import Path
 
+# HTML
+from fastapi.staticfiles import StaticFiles
+from fastapi import Request
+from fastapi.responses import FileResponse
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
+
+# Monitoring
 from starlette_prometheus import metrics, PrometheusMiddleware
-
 
 # Initialize the FastAPI app
 app = FastAPI()
+
+# Static HTML templates
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
+
 
 # Add the Prometheus middleware to the app
 app.add_middleware(PrometheusMiddleware)
@@ -17,6 +31,11 @@ app.add_route("/metrics", metrics)
 
 # Set the OpenAI API key from an environment variable
 openai.api_key = os.environ.get("OPENAI_API_KEY")
+
+@app.get("/")
+async def home(request: Request):
+	return templates.TemplateResponse("index.html",{"request":request})
+
 
 # Define a request model for the text to summarize
 class SummarizeRequest(BaseModel):

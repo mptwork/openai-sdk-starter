@@ -4,6 +4,9 @@ openai
 requests
 python-dotenv
 
+###### UI
+jinja2
+
 ###### Testing and Coverage
 httpx
 pytest
